@@ -12,6 +12,10 @@ var getRandomColor = function (hue) {
   return 'hsl(' + hue + ', ' + Math.random() * 100 + '%, 50%)';
 };
 
+  var getBlueWithRandomSaturation = function() {
+    return 'hsl(240, ' + getRandom(100) + '%, 50%)';
+  }
+
 
 var window = {
   renderStatistics: function(ctx, var names = [Вы], times[]) {
@@ -31,34 +35,9 @@ ctx.fillRect(100, 10, 270, 420);
 ctx.fillStylef = 'rgba(0, 0, 0, 0.7)';
 ctx.fillRect(110, 20, 270, 420);
 
-ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' +
-                       Math.floor(255-42.5*j) + ',0)';
-
-function randomRgbaString (alpha) {
-  let r = Math.floor(Math.random() * 255)
-    let g = Math.floor(Math.random() * 255)
-    let b = Math.floor(Math.random() * 255)
-    let a = alpha
-    return `rgba(${r},${g},${b},${a})`
-  }
 
 
-  function generateHslaColors (saturation, lightness, alpha, amount) {
-    let colors = []
-    let huedelta = Math.trunc(360 / amount)
 
-    for (let i = 0; i < amount; i++) {
-      let hue = i * huedelta
-      colors.push(`hsla(${hue},${saturation}%,${lightness}%,${alpha})`)
-    }
-
-    return colors
-  }
-
-
-  var getBlueWithRandomSaturation = function() {
-    return 'hsl(240, ' + getRandom(100) + '%, 50%)';
-  }
 
 // Задача
 // В новом файле js/stat.js определите функцию renderStatistics,
