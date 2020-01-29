@@ -11,53 +11,61 @@ var STRING_ARR = ['Ура вы победили!', 'Список результ�
 var textStyles = {
   FONT_SIZE: '16px',
   FONT_FAMILY: 'PT Mono',
-  ctx.textBaseline = 'hanging';
 };
 
+var FONT_TEXT_BASELINE = 'hanging';
 
-//Генерация облака
-var renderCloud = function (ctx, x, y, width, height, color) {
-  ctx.fillStyle = color; ///почему не подсвечивает?
-  ctx.fillRect(x, y, width, height);
-};
-
-
-ctx.font = '30px Tahoma';
-ctx.fillText('Привет', 0, 10);
-
-
-//Генерация текста
-var renderText = function (ctx, textStyles,  ) {
-  ctx.font = textStyles;
-
-  for (var i = 0; i < STRING_ARR.length; i++) {
-    ctx.fillText(STRING_ARR[i], 10, 50);
-  }
-};
+//ctx.textBaseline = 'hanging';
 
 var textCoord = {
   X: 40,
   Y: 120
 };
 
+//Генерация облака
+var renderCloud = function (ctx, x, y, width, height, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, width, height);
+};
+
+//Генерация текста
+var renderText = function (ctx, textStyles, textCoord, STRING_ARR, color) {
+  ctx.fillStyle = color;
+  ctx.font = textStyles.FONT_SIZE, textStyles.FONT_FAMILY;
+  ctx.textBaseline = FONT_TEXT_BASELINE;
+
+  // ctx.fillText("Hello world", 10, 50);
+
+  for (var i = 0; i < STRING_ARR.length; i++) {
+    ctx.fillText(STRING_ARR[i], textCoord.X, textCoord.Y);
+    // ctx.textBaseline = textStyles.FONT_TEXT_BASELINE;
+    // ctx.textBaseline = 'hanging';
+  }
+};
 
 //Случаянная насыщенность
 var getRandomColor = function (hue) {
-  return 'hsl(' + hue + ', ' + Math.random() * 100 + '%, 50%)';
+  return 'hsl(' + hue + ', ' + Math.round(Math.random() * 101) + '%, 50%)';
 };
 
+//Генерация статистики
+var renderHistogram = function (ctx, names, times) {
 
-window.renderStatistics = function (ctx, x, y, color) {
-  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, CLOUD_WIDTH, CLOUD_HEIGHT, '#fff');
-  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, CLOUD_WIDTH, CLOUD_HEIGHT, 'rgba(0, 0, 0, 0.7)');
+};
 
-  renderText(ctx, color, textStyles);
+window.renderStatistics = function (ctx, names, times) {
 
-  renderHistogram()
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_WIDTH, CLOUD_HEIGHT, 'rgba(0, 0, 0, 0.7)');
+  renderCloud(ctx, CLOUD_X - CLOUD_GAP, CLOUD_Y - CLOUD_GAP, CLOUD_WIDTH, CLOUD_HEIGHT, '#fff');
+
+  renderText(ctx, textStyles, textCoord, STRING_ARR, '#000');
+
+  // renderHistogram(ctx, names, times);
 
   if (names = ['Вы']) {
     color = 'rgba(255, 0 , 0, 1)';
-  else () {
+  }
+  else {
     color = '#000';
   };
 };
