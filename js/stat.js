@@ -2,92 +2,62 @@
 
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
-
-var renderCloud = function (ctx, x, y, color) {
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
+var CLOUD_X = 10;
+var CLOUD_Y = 100;
+var CLOUD_GAP = 10;
+var CLOUD_COLOR = 'white';
+var CLOUD_SHADOW = 'rgba(0, 0, 0, 0.7)';
+var STRING_ARR = ['Ура вы победили!', 'Список результатов: '];
+var textStyles = {
+  FONT_SIZE: '16px',
+  FONT_FAMILY: 'PT Mono',
+  ctx.textBaseline = 'hanging';
 };
 
+
+//Генерация облака
+var renderCloud = function (ctx, x, y, width, height, color) {
+  ctx.fillStyle = color; ///почему не подсвечивает?
+  ctx.fillRect(x, y, width, height);
+};
+
+
+ctx.font = '30px Tahoma';
+ctx.fillText('Привет', 0, 10);
+
+
+//Генерация текста
+var renderText = function (ctx, textStyles,  ) {
+  ctx.font = textStyles;
+
+  for (var i = 0; i < STRING_ARR.length; i++) {
+    ctx.fillText(STRING_ARR[i], 10, 50);
+  }
+};
+
+var textCoord = {
+  X: 40,
+  Y: 120
+};
+
+
+//Случаянная насыщенность
 var getRandomColor = function (hue) {
   return 'hsl(' + hue + ', ' + Math.random() * 100 + '%, 50%)';
 };
 
-  var getBlueWithRandomSaturation = function() {
-    return 'hsl(240, ' + getRandom(100) + '%, 50%)';
-  }
 
+window.renderStatistics = function (ctx, x, y, color) {
+  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, CLOUD_WIDTH, CLOUD_HEIGHT, '#fff');
+  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, CLOUD_WIDTH, CLOUD_HEIGHT, 'rgba(0, 0, 0, 0.7)');
 
-var window = {
-  renderStatistics: function(ctx, var names = [Вы], times[]) {
+  renderText(ctx, color, textStyles);
 
-  }
-}
+  renderHistogram()
 
-// DOM-элемент канваса
-var canvas = document.getElementById('canvas'); //получить доступ к самому тегу <canvas>, например, с помощью метода getElementById.
-
-// Контекст отрисовки
-var ctx = canvas.getContext('2d');
-
-ctx.fillStyle = 'white';
-ctx.fillRect(100, 10, 270, 420);
-
-ctx.fillStylef = 'rgba(0, 0, 0, 0.7)';
-ctx.fillRect(110, 20, 270, 420);
-
-
-
-
-
-// Задача
-// В новом файле js/stat.js определите функцию renderStatistics,
-// которая будет являться методом объекта window, со следующими аргументами:
-
-// ctx — канвас на котором рисуется игра.
-// names — массив, с именами игроков прошедших уровень. Имя самого игрока — Вы.
-// Массив имён формируется случайным образом.
-// times — массив, по длине совпадающий с массивом names.
-// Массив содержит время прохождения уровня соответствующего игрока из массива names.
-// Время прохождения уровня задано в миллисекундах.
-// Эта функция будет вызываться каждый раз когда игрок проходит уровень.
-// Чтобы успешно пройти уровень, надо выстрелить фаерболом (клавиша Shift) в забор.
-
-// При вызове этой функции на канвас ctx должны быть выведены следующие элементы:
-
-// Белое облако с координатами [100, 10] высотой 270px и шириной 420px.
-// Облако может быть как правильным многоугольником, нарисованным методом fillRect,
-// так и неправильным нарисованным с помощью методов beginPath, moveTo, closePath, fill и других.
-// Под облаком должна располагаться тень: многоугольник такой же формы,
-// залитый цветом rgba(0, 0, 0, 0.7) (полупрозрачный чёрный),
-// смещённый относительно белого на 10px вниз и вправо.
-// На облаке должен быть отрисован текст сообщения ’Ура вы победили! \nСписок результатов:
-// ’ с помощью метода fillText. Текст должен быть набран шрифтом PT Mono размером 16px.
-// Обратите внимание. Особенностью отрисовки текста на канвасе является то,
-// что он не поддерживает перенос, поэтому каждая новая строчка должна быть отрисована
-// новым вызовом метода fillText или strokeText.
-
-// После сообщения о победе должна располагаться гистограмма времён участников.
-// Параметры гистограммы следующие:
-// Высота гистограммы 150px.
-// Ширина колонки 40px.
-// Расстояние между колонками 50px.
-// Цвет колонки игрока Выrgba(255, 0, 0, 1).
-// Цвет колонок других игроков — синий, а насыщенность задаётся случайным образом.
-// Обратите внимание. В rgba последний параметр — это прозрачность, а не насыщенность.
-//  Поэтому для задания цвета колонок других игроков нужно использовать hsl(240,100%,50%).
-
-// Обратите внимание. Функцию отрисовки статистики вызывать не надо.
-// Её будет вызывать непосредственно сама игра из файла js/game.js.
-
-// Обратите внимание. Время прохождения игры должно быть округлено к целому числу.
-
-
-
-
-
-
-
-
-
-
-
+  if (names = ['Вы']) {
+    color = 'rgba(255, 0 , 0, 1)';
+  else () {
+    color = '#000';
+  };
+};
