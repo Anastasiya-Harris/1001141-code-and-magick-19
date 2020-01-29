@@ -19,8 +19,8 @@ var COLUMN_GAP = 50;
 var COLUMN_HEIGHT = 150;
 
 var textCoord = {
-  X: 120,
-  Y: 20
+  X: 150,
+  Y: 10
 };
 
 //Генерация облака
@@ -48,7 +48,7 @@ var getRandomColor = function (hue) {
 
 //Генерация статистики
 var renderHistogram = function (ctx, names, times) {
-renderCloud (ctx, 20, 140, COLUMN_WIDTH, COLUMN_HEIGHT, getRandomColor); //Высота должна вычисляться по времени
+renderCloud (ctx, 150, 100, COLUMN_WIDTH, COLUMN_HEIGHT, getRandomColor); //Высота должна вычисляться по времени
 };
 
 window.renderStatistics = function (ctx, names, times) {
